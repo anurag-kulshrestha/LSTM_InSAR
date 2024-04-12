@@ -24,8 +24,8 @@ def apply_percentile_thresholds(Tr_q3_Heaviside, Tr_q3_breakpoint, Tr_q3_lin, Tr
     brp_low_th = Tr_q3_breakpoint < np.percentile(Tr_q3_breakpoint, percentile_anomaly_low)
     #lin_model_pt_th = np.where(Tr_q3_lin!=0)#
     #print('np.percentile(Tr_q3_lin, percentile_lin)', np.nanpercentile(Tr_q3_lin, percentile_lin))
-    lin_model_pt_th = Tr_q3_lin < np.nanpercentile(Tr_q3_lin, percentile_lin) #np.where(Tr_q3_lin!=0)
-    sin_model_pt_th = Tr_q3_sin < np.nanpercentile(Tr_q3_sin, percentile_sin) #np.where(Tr_q3_sin!=0)
+    lin_model_pt_th = Tr_q3_lin > np.nanpercentile(Tr_q3_lin, percentile_lin) #np.where(Tr_q3_lin!=0)
+    sin_model_pt_th = Tr_q3_sin > np.nanpercentile(Tr_q3_sin, percentile_sin) #np.where(Tr_q3_sin!=0)
     
     #find points where at least one data point passes through the threshold
     hea_perc_th_pts = np.intersect1d(np.unique(np.where(hea_perc_th)[0]), np.unique(np.where(brp_low_th)[0]))
@@ -528,7 +528,7 @@ if __name__=='__main__':
     
     percentile_anomaly, percentile_anomaly_low = 95, 10
     percentile_lin = 95
-    percentile_sin = 30
+    percentile_sin = 95
     epoch_low_th, epoch_high_th = np.array([1, 9])*epochs//10
     hea_jump_min, hea_jump_max, brp_jump_max, hea_theta_max, brp_theta_min, brp_theta_max = 7.5, 14, 2.5, 10, 40, 70 #5, 14, 5, 20, 20, 70 # #
     
