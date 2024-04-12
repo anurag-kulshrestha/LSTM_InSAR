@@ -406,12 +406,12 @@ def anomaly_map_analysis(PS_X, PS_Y, vv_amp_arr, vh_amp_arr, hea_perc_th_pts, br
     
     #brp_cax = fig.add_axes([.6, .7, 0.2, 0.05])
     #cb = plt.colorbar(hea_sc, orientation='horizontal', cax=brp_cax)
-    
+    # Plotting jumps and vel. change angles as color of markers
     #brp_sc = ax.scatter(PS_X[brp_perc_th_pts], PS_Y[brp_perc_th_pts], c=abs(theta_brp), marker=brp_marker, s=200, cmap='Greens')
     brp_sc = ax.scatter(PS_X[brp_perc_th_pts], PS_Y[brp_perc_th_pts], c=cm.Greens(norm_vel_ch(abs(theta_brp))), marker=brp_marker, s=200)#, cmap='Greens')
     #brp_cax = fig.add_axes([.6, .6, 0.2, 0.05])
     #cb = plt.colorbar(brp_sc, orientation='horizontal', cax=brp_cax)
-    
+    # Plotting epoch numbers as color of markers
     #plt.scatter(PS_X[hea_perc_th_pts], PS_Y[hea_perc_th_pts], c=heaviside_max_epochs+1, marker=hea_marker, s=200, cmap='YlOrRd', label='Heaviside')
     #plt.scatter(PS_X[brp_perc_th_pts], PS_Y[brp_perc_th_pts], c=breakpoint_max_epochs, marker=brp_marker, s=200, cmap='YlOrRd', label='Breakpoint')
     #plt.scatter(PS_X[lin_perc_th_pts], PS_Y[lin_perc_th_pts], c='w', marker=lin_marker, s=200, label='Linear')
